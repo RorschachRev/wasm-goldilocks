@@ -1,0 +1,10 @@
+[package]
+name = "goldilocks-remake"
+version = "0.0.1"
+
+[lib]
+name = "goldilocks-remake"
+path = "src/lib.rs"
+
+[dependencies]
+ed448-goldilocks = "0.8.3"
