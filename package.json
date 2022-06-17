@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "vue": "latest",
+    "vue-hot-reload-api": "latest"
+  },
+  "resolutions": { "glob-parent": "latest" },
+  "scripts": {
+    "start": "parcel index.html --no-cache"
+  },
+  "preinstall": "npx npm-force-resolutions",
+  "devDependencies": {
+    "@babel/core": "latest",
+    "@vue/component-compiler-utils": "latest",
+    "parcel-bundler": "latest",
+    "parcel-plugin-wasm-pack": "latest",
+    "postcss-modules": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vue-template-compiler": "latest"
+  }
+}

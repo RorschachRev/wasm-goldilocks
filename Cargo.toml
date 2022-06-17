@@ -1,10 +1,21 @@
 [package]
-name = "goldilocks-remake"
+name = "goldilocks_wasm"
 version = "0.0.1"
+exclude = [
+    ".gitignore",
+]
 
 [lib]
-name = "goldilocks-remake"
-path = "src/lib.rs"
+crate-type = ["cdylib"]
 
+edition = "2021"
 [dependencies]
-ed448-goldilocks = "0.8.3"
+wasm-bindgen = "0.2"
+subtle = "2.2.2"
+hex = "0.4"
+fiat-crypto = { version = "0.1.4", optional = true}
+
+[features]
+default = ["fiat_u64_backend"]
+fiat_u64_backend = ["fiat-crypto"]
+u32_backend = []
