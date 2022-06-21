@@ -11,6 +11,7 @@ crate-type = ["cdylib"]
 edition = "2021"
 [dependencies]
 wasm-bindgen = "0.2"
+js-sys = "0.3.58"
 subtle = "2.2.2"
 hex = "0.4"
 fiat-crypto = { version = "0.1.4", optional = true}

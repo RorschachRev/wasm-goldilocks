@@ -1,6 +1,8 @@
 extern crate wasm_bindgen;
 
 use wasm_bindgen::prelude::*;
+// use wasm_bindgen::JsValue;
+use js_sys::{Uint8Array, ArrayBuffer};
 
 use crate::curve::twedwards::extended::ExtendedPoint;
 use std::fmt;
@@ -19,11 +21,11 @@ impl fmt::Debug for CompressedRistretto {
     }
 }
 
-impl ConstantTimeEq for CompressedRistretto {
-    fn ct_eq(&self, other: &CompressedRistretto) -> Choice {
-        self.as_bytes().ct_eq(other.as_bytes())
-    }
-}
+// impl ConstantTimeEq for CompressedRistretto {
+//     fn ct_eq(&self, other: &CompressedRistretto) -> bool {
+//         self.as_bytes().loose_eq(other.as_bytes())
+//     }
+// }
 
 impl PartialEq for CompressedRistretto {
     fn eq(&self, other: &CompressedRistretto) -> bool {
@@ -34,8 +36,16 @@ impl Eq for CompressedRistretto {}
 
 #[wasm_bindgen]
 impl CompressedRistretto {
-    pub fn as_bytes(&self) -> &[u8] {
-        &self.0
+    pub fn as_bytes(&self) -> js_sys::Uint8Array {
+        js_sys::Uint8Array::from(&self.0[..])
+    }
+
+    pub fn ct_eq(&self, other: &CompressedRistretto) -> bool {
+        self.as_bytes().to_vec() == other.as_bytes().to_vec()
+    }
+
+    fn eq(&self, other: &CompressedRistretto) -> bool {
+        self.ct_eq(other).into()
     }
 }
 
