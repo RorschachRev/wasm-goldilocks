@@ -1,3 +1,7 @@
+extern crate wasm_bindgen;
+
+use wasm_bindgen::prelude::*;
+
 #[cfg(feature = "fiat_u64_backend")]
 pub mod fiat_u64;
 
